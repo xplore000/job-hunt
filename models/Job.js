@@ -1,3 +1,4 @@
+// models/Job.js
 const mongoose = require('mongoose');
 
 const JobSchema = new mongoose.Schema({
@@ -5,7 +6,8 @@ const JobSchema = new mongoose.Schema({
   url: { type: String, required: true },
   description: { type: String },
   postedAt: { type: Date, default: Date.now },
-  deadline: { type: Date, required: true }  // New field for application deadline
+  // Deadline is optional; if not provided, it will be null.
+  deadline: { type: Date }
 });
 
 module.exports = mongoose.model('Job', JobSchema);

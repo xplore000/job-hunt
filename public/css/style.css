@@ -1,25 +1,24 @@
 /* public/css/style.css */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .navbar-brand {
-    font-weight: bold;
-  }
-  
-  .card {
-    border: none;
-  }
-  
-  .card-header {
-    font-size: 1.25rem;
-  }
-  
-  .btn {
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn:hover {
-    opacity: 0.9;
-  }
-  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.card {
+  border: none;
+}
+
+.card-header {
+  font-size: 1.25rem;
+}
+
+.btn {
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}

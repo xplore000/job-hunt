@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Job = require('../models/Job');
 
-// Existing route: List all job postings
+// Home page: List all job postings
 router.get('/', async (req, res) => {
   try {
     const jobs = await Job.find().sort({ postedAt: -1 });
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// New route: Display job details
+// Job details page
 router.get('/job/:id', async (req, res) => {
   try {
     const job = await Job.findById(req.params.id);
@@ -29,7 +29,7 @@ router.get('/job/:id', async (req, res) => {
   }
 });
 
-// Optional: Redirect route if you still want the original behavior
+// (Optional) Redirect directly to the job URL if needed
 router.get('/go/:id', async (req, res) => {
   try {
     const job = await Job.findById(req.params.id);

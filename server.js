@@ -1,25 +1,20 @@
 // server.js
-
-require('dotenv').config(); // Load environment variables
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 
 const app = express();
 
+// Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-
-// Middleware to parse request bodies
+// Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-// Set EJS as the templating engine
 app.set('view engine', 'ejs');
-
-// Serve static files from the "public" folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
@@ -29,7 +24,7 @@ const adminRoutes = require('./routes/admin');
 app.use('/', indexRoutes);
 app.use('/admin', adminRoutes);
 
-// Start the server
+// Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
