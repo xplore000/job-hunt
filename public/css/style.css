@@ -1,24 +1,191 @@
 /* public/css/style.css */
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
 }
 
-.navbar-brand {
-  font-weight: bold;
+/* Navbar styling */
+.navbar {
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.card {
-  border: none;
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.card-header {
+.hero-title {
+  font-size: 2.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+.hero-subtitle {
   font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: #6c757d;
 }
 
-.btn {
-  transition: background-color 0.3s ease;
+/* Creative Card Styling */
+.creative-card {
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.btn:hover {
-  opacity: 0.9;
+.creative-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
+
+/* Card Title */
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* Button Styling */
+.btn-outline-primary {
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+/* Footer Styling */
+footer {
+  background-color: #ffffff;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
+/* ========== Existing styles for your site ========== */
+
+/* General body styling, hero section, cards, etc. */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.navbar {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.hero-section {
+  background: #fff;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 2.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: #6c757d;
+}
+
+.creative-card {
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.creative-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+footer {
+  background-color: #ffffff;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* ========== Logo Marquee Styles ========== */
+
+.logo-marquee {
+  position: relative;
+  overflow: hidden; /* Hide the overflow to create the scrolling effect */
+  width: 100%;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Spacing between logos */
+  animation: scroll-logos 15s linear infinite;
+}
+
+/* Example logo sizing */
+.logo-container img {
+  height: 40px;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.logo-container img:hover {
+  opacity: 1;
+}
+
+/* Keyframes for continuous scrolling from right to left */
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* ========== Responsive Adjustments ========== */
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
+
+#jobs {
+  margin-top: 1rem; /* Adjust this value to move it up/down as desired */
+  margin-bottom: 2rem;
+}
+.job-description {
+  white-space: pre-line;
+}
+

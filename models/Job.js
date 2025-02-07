@@ -7,7 +7,10 @@ const JobSchema = new mongoose.Schema({
   description: { type: String },
   postedAt: { type: Date, default: Date.now },
   // Deadline is optional; if not provided, it will be null.
-  deadline: { type: Date }
+  deadline: { type: Date },
+  // New fields to indicate job type
+  isFresher: { type: Boolean, default: false },
+  isExperienced: { type: Boolean, default: false }
 });
 
 module.exports = mongoose.model('Job', JobSchema);
