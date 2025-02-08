@@ -30,8 +30,20 @@
         <div class="card border-0 shadow-sm">
           <div class="card-body p-5">
             <h1 class="card-title display-5 fw-bold mb-4"><%= job.title %></h1>
-            <!-- Added the class "job-description" for formatting -->
-            <p class="card-text lead job-description mb-4"><%= job.description %></p>
+            
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator text-center mb-3">
+              <p class="text-muted">Scroll down to see the apply link</p>
+            </div>
+            
+            <!-- Job Description Section -->
+            <div class="job-description-container mb-4">
+              <h2 class="description-title">Job Description</h2>
+              <p class="card-text lead job-description">
+                <%= job.description %>
+              </p>
+            </div>
+            
             <div class="mb-4">
               <p class="mb-1 text-muted">
                 <strong>Posted on:</strong>
@@ -48,10 +60,12 @@
                 <p class="mb-1 text-muted">Closing soon – apply at the earliest</p>
               <% } %>
             </div>
+            
             <div class="d-flex gap-3">
               <a href="<%= job.url %>" target="_blank" class="btn btn-primary btn-lg">Apply Now</a>
               <a href="/" class="btn btn-outline-secondary btn-lg">Back to Listings</a>
             </div>
+            
             <!-- Redesigned Share Section Using Images -->
             <div class="share-section mt-4 text-center">
               <h5 class="share-title">Share this Job</h5>
