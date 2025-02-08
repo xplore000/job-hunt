@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="google-adsense-account" content="ca-pub-2003392549681036">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Job Links</title>
   <!-- Google Font: Poppins for a modern and clean look -->
   <link
@@ -17,9 +18,11 @@
   />
   <!-- Custom CSS (ensure this path matches your setup) -->
   <link rel="stylesheet" href="/css/style.css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2003392549681036"
+     crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- Navigation with Search Form -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
     <div class="container">
       <a class="navbar-brand fw-bold" href="/">Job Links</a>
@@ -34,6 +37,25 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+      <!-- Search form in navbar -->
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <form class="d-flex" method="GET" action="/">
+          <input
+            class="form-control me-2"
+            type="search"
+            name="search"
+            placeholder="Search for jobs"
+            aria-label="Search"
+            value="<%= typeof search !== 'undefined' ? search : '' %>"
+          >
+          <select name="filterDate" class="form-select me-2">
+            <option value="">All Dates</option>
+            <option value="today" <%= filterDate === 'today' ? 'selected' : '' %>>Today</option>
+            <option value="yesterday" <%= filterDate === 'yesterday' ? 'selected' : '' %>>Yesterday</option>
+          </select>
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+      </div>
     </div>
   </nav>
 
@@ -72,7 +94,7 @@
   </section>
 
   <!-- Jobs Listing -->
-  <main id="jobs" class="container">
+  <main id="jobs" class="container mt-4">
     <h2 class="mb-4 text-center">Available Job Opportunities</h2>
     <% if (jobs.length > 0) { %>
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -80,7 +102,16 @@
           <div class="col">
             <div class="card h-100 border-0 creative-card">
               <div class="card-body d-flex flex-column">
-                <h5 class="card-title mb-2"><%= job.title %></h5>
+                <!-- Job Title with Job ID and Category -->
+                <h5 class="card-title mb-2">
+                  <%= job.title %>
+                  <% if (job.jobId) { %>
+                    <small class="text-muted">
+                      (#<%= job.jobId %>
+                      <% if (job.jobCategory) { %> - <%= job.jobCategory %><% } %>)
+                    </small>
+                  <% } %>
+                </h5>
                 <!-- Display Job Type (Fresher / Experienced) -->
                 <% 
                   let jobTypes = [];
@@ -97,16 +128,18 @@
                         ? job.description.substring(0, 100) + "..."
                         : job.description %>
                 </p>
+                <!-- Bold Posted Date -->
                 <p class="mb-1 text-secondary small">
-                  Posted: <%= new Date(job.postedAt).toLocaleDateString() %>
+                  <strong>Posted:</strong> <strong><%= new Date(job.postedAt).toLocaleDateString() %></strong>
                 </p>
+                <!-- Bold Deadline (if available) -->
                 <% if (job.deadline) { %>
                   <p class="mb-3 text-secondary small">
-                    Deadline: <%= new Date(job.deadline).toLocaleDateString() %>
+                    <strong>Deadline:</strong> <strong><%= new Date(job.deadline).toLocaleDateString() %></strong>
                   </p>
                 <% } else { %>
                   <p class="mb-3 text-secondary small">
-                    Closing soon – apply at the earliest
+                    <strong> Closing soon – apply at the earliest </strong>
                   </p>
                 <% } %>
                 <a href="/job/<%= job._id %>" class="btn btn-outline-primary mt-auto">View Details</a>

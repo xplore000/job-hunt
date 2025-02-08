@@ -3,47 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
   <meta name="google-adsense-account" content="ca-pub-2003392549681036">
   <title><%= job.title %> - Job Details</title>
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2003392549681036"
+  <!-- Separate CSS file for job details page -->
+  <link rel="stylesheet" href="/css/job-details.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2003392549681036"
      crossorigin="anonymous"></script>
+</head>
+
 <body class="bg-light">
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <!-- Minimalist Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm border-bottom">
     <div class="container">
-      <a class="navbar-brand" href="/">Job Links</a>
+      <a class="navbar-brand fw-bold" href="/">Job Links</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
   </nav>
   
+  <!-- Main Content -->
   <main class="container my-5">
-    <div class="card shadow-sm">
-      <div class="card-body">
-        <h1 class="card-title"><%= job.title %></h1>
-        <p class="card-text job-description"><%= job.description %></p>
-        <p class="card-text">
-          <small class="text-muted">Posted on: <%= new Date(job.postedAt).toLocaleDateString() %></small>
-        </p>
-        <% if (job.deadline) { %>
-          <p class="card-text">
-            <small class="text-muted">Application Deadline: <%= new Date(job.deadline).toLocaleDateString() %></small>
-          </p>
-          <!-- Countdown timer container -->
-          <div id="countdown" class="mb-3 text-danger fw-bold"></div>
-        <% } else { %>
-          <p class="card-text">
-            <small class="text-muted">Closing soon – apply at the earliest</small>
-          </p>
-        <% } %>
-        <a href="<%= job.url %>" target="_blank" class="btn btn-primary">Apply Now</a>
-        <a href="/" class="btn btn-secondary ms-2">Back to Listings</a>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-5">
+            <h1 class="card-title display-5 fw-bold mb-4"><%= job.title %></h1>
+            <p class="card-text lead mb-4"><%= job.description %></p>
+            <div class="mb-4">
+              <p class="mb-1 text-muted">
+                <strong>Posted on:</strong>
+                <strong><%= new Date(job.postedAt).toLocaleDateString() %></strong>
+              </p>
+              <% if (job.deadline) { %>
+                <p class="mb-1 text-muted">
+                  <strong>Application Deadline:</strong>
+                  <strong><%= new Date(job.deadline).toLocaleDateString() %></strong>
+                </p>
+                <!-- Countdown timer container -->
+                <div id="countdown" class="mt-2 text-danger fw-bold"></div>
+              <% } else { %>
+                <p class="mb-1 text-muted">Closing soon – apply at the earliest</p>
+              <% } %>
+            </div>
+            <div class="d-flex gap-3">
+              <a href="<%= job.url %>" target="_blank" class="btn btn-primary btn-lg">Apply Now</a>
+              <a href="/" class="btn btn-outline-secondary btn-lg">Back to Listings</a>
+            </div>
+            <!-- Redesigned Share Section Using Images -->
+            <div class="share-section mt-4 text-center">
+              <h5 class="share-title">Share this Job</h5>
+              <div class="share-buttons">
+                <a href="#" id="shareWhatsApp" class="share-button" title="Share on WhatsApp">
+                  <img src="/images/whatsapp.png" alt="WhatsApp" class="share-icon">
+                  <span>WhatsApp</span>
+                </a>
+                <a href="#" id="shareFacebook" class="share-button" title="Share on Facebook">
+                  <img src="/images/facebook.png" alt="Facebook" class="share-icon">
+                  <span>Facebook</span>
+                </a>
+                <a href="#" id="shareEmail" class="share-button" title="Share via Email">
+                  <img src="/images/email.png" alt="Email" class="share-icon">
+                  <span>Email</span>
+                </a>
+                <button id="copyLinkBtn" class="share-button" title="Copy Link">
+                  <img src="/images/copy.png" alt="Copy Link" class="share-icon">
+                  <span>Copy Link</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -66,5 +98,7 @@
     }
   </script>
   <% } %>
+  <!-- Include the external share JS file -->
+  <script src="/js/share.js"></script>
 </body>
 </html>

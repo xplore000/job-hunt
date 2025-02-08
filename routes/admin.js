@@ -1,4 +1,3 @@
-// routes/admin.js
 const express = require('express');
 const router = express.Router();
 const Job = require('../models/Job');
@@ -17,11 +16,19 @@ router.use((req, res, next) => {
   }
 });
 
-// Render admin panel with add form and list of jobs
+// Render admin panel with add form and list of jobs (with pagination)
 router.get('/', async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = 10; // Number of jobs per page
+  const message = req.query.message || null;
   try {
-    const jobs = await Job.find().sort({ postedAt: -1 });
-    res.render('admin', { message: null, jobs });
+    const totalJobs = await Job.countDocuments();
+    const jobs = await Job.find()
+      .sort({ postedAt: -1 })
+      .skip((page - 1) * limit)
+      .limit(limit);
+    const totalPages = Math.ceil(totalJobs / limit);
+    res.render('admin', { message, jobs, page, totalPages });
   } catch (error) {
     console.error(error);
     res.render('admin', { message: 'Error fetching job posts.', jobs: [] });
@@ -30,30 +37,61 @@ router.get('/', async (req, res) => {
 
 // Handle job addition
 router.post('/add', async (req, res) => {
-  // Destructure the new fields along with the existing ones
-  const { title, url, description, deadline, isFresher, isExperienced } = req.body;
+  const { title, url, description, deadline, isFresher, isExperienced, jobCategory } = req.body;
   try {
     const newJob = new Job({
       title,
       url,
       description,
-      // Convert deadline to a Date object if provided, otherwise leave as null.
       deadline: deadline ? new Date(deadline) : null,
-      // Convert checkbox values to Booleans (true if checked, false otherwise)
       isFresher: isFresher ? true : false,
-      isExperienced: isExperienced ? true : false
+      isExperienced: isExperienced ? true : false,
+      jobCategory: jobCategory || undefined
     });
     await newJob.save();
-    res.render('admin', {
-      message: 'Job posting added successfully!',
-      jobs: await Job.find().sort({ postedAt: -1 })
-    });
+    res.redirect('/admin?username=' + process.env.ADMIN_USERNAME + '&password=' + process.env.ADMIN_PASSWORD);
   } catch (error) {
     console.error(error);
-    res.render('admin', {
-      message: 'Error adding job posting.',
-      jobs: await Job.find().sort({ postedAt: -1 })
-    });
+    const jobs = await Job.find().sort({ postedAt: -1 });
+    res.render('admin', { message: 'Error adding job posting.', jobs });
+  }
+});
+
+// Render the edit form for a job posting
+router.get('/edit/:id', async (req, res) => {
+  try {
+    const job = await Job.findById(req.params.id);
+    if (!job) {
+      return res.status(404).send('Job not found');
+    }
+    res.render('admin-edit', { job, message: null });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+// Handle job update from the edit form
+router.post('/edit/:id', async (req, res) => {
+  const { title, url, description, deadline, isFresher, isExperienced, jobCategory } = req.body;
+  try {
+    const updatedJob = await Job.findByIdAndUpdate(req.params.id, {
+      title,
+      url,
+      description,
+      deadline: deadline ? new Date(deadline) : null,
+      isFresher: isFresher ? true : false,
+      isExperienced: isExperienced ? true : false,
+      jobCategory: jobCategory || undefined
+    }, { new: true });
+    if (!updatedJob) {
+      return res.status(404).send('Job not found');
+    }
+    // Redirect back to the admin panel with a success message
+    res.redirect('/admin?username=' + process.env.ADMIN_USERNAME + '&password=' + process.env.ADMIN_PASSWORD + '&message=' + encodeURIComponent('Edit successful'));
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
   }
 });
 
