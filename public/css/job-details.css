@@ -1,100 +1,104 @@
 /* Base Styles */
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Navbar */
-  .navbar {
-    border-bottom: 1px solid #e0e0e0;
-  }
-  .navbar-brand {
-    font-size: 1.5rem;
-  }
-  
-  /* Job Details Card */
-  .card {
-    border-radius: 0.5rem;
-  }
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar */
+.navbar {
+  border-bottom: 1px solid #e0e0e0;
+}
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+/* Job Details Card */
+.card {
+  border-radius: 0.5rem;
+}
+.card-body {
+  padding: 3rem;
+}
+.card-title {
+  margin-bottom: 1.5rem;
+}
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+/* Job Description Formatting */
+.job-description {
+  white-space: pre-line; /* Preserves line breaks from the text */
+}
+
+/* Buttons */
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.375rem;
+}
+.btn-outline-secondary {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.375rem;
+}
+
+/* Countdown Timer */
+#countdown {
+  font-size: 1.125rem;
+}
+
+/* Redesigned Share Section Using Images */
+.share-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+.share-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
+.share-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.share-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #333;
+  background-color: #fff;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.share-button:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+.share-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
   .card-body {
-    padding: 3rem;
+    padding: 2rem;
   }
   .card-title {
-    margin-bottom: 1.5rem;
-  }
-  .lead {
-    font-size: 1.125rem;
-    line-height: 1.6;
-  }
-  
-  /* Buttons */
-  .btn-primary {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 0.375rem;
-  }
-  .btn-outline-secondary {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 0.375rem;
-  }
-  
-  /* Countdown Timer */
-  #countdown {
-    font-size: 1.125rem;
-  }
-  
-  /* Redesigned Share Section Using Images */
-  .share-section {
-    margin-top: 2rem;
-    text-align: center;
-  }
-  .share-title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #555;
-  }
-  .share-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
+    font-size: 1.75rem;
   }
   .share-button {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 30px;
-    text-decoration: none;
-    color: #333;
-    background-color: #fff;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
   }
-  .share-button:hover {
-    background-color: #f0f0f0;
-    transform: scale(1.05);
-  }
-  .share-button img.share-icon {
-    width: 24px;
-    height: 24px;
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 576px) {
-    .card-body {
-      padding: 2rem;
-    }
-    .card-title {
-      font-size: 1.75rem;
-    }
-    .share-button {
-      padding: 0.5rem 0.75rem;
-      font-size: 0.9rem;
-    }
-  }
-  
+}
