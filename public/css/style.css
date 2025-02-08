@@ -189,3 +189,65 @@ footer {
   white-space: pre-line;
 }
 
+/* Sidebar */
+#sidebar {
+  min-height: 100vh;
+  border-right: 1px solid #ddd;
+  padding-top: 1rem;
+}
+
+.sidebar .nav-link {
+  font-size: 1rem;
+  padding: 10px 15px;
+  color: #333;
+  transition: background 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+  background: #007bff;
+  color: #fff;
+}
+
+.sidebar-heading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-bottom: 2px solid #007bff;
+}
+
+/* Responsive Sidebar */
+@media (max-width: 768px) {
+  #sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100vh;
+    left: -250px;
+    top: 0;
+    background: #f8f9fa;
+    transition: left 0.3s ease-in-out;
+    z-index: 1050;
+    padding-top: 20px;
+  }
+
+  #sidebar.active {
+    left: 0;
+  }
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: block;
+  }
+}
