@@ -105,4 +105,21 @@ router.get('/go/:id', async (req, res) => {
   }
 });
 
+// New route: About Us page
+router.get('/about', (req, res) => {
+  res.render('about', { title: 'About Us - Job Looker' });
+});
+
+// New route: Contact Us page
+router.get('/contact', (req, res) => {
+  res.render('contact', { title: 'Contact Us - Job Looker' });
+});
+
+// (Optional) POST route for handling contact form submissions
+// Uncomment and update as needed if you plan to process contact messages
+// router.post('/send-message', (req, res) => {
+//   // Handle message submission (e.g., save to database or send an email)
+//   res.send('Message received');
+// });
+
 module.exports = router;

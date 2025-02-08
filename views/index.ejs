@@ -23,41 +23,55 @@
 </head>
 <body>
   <!-- Navigation with Search Form -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="/">Job Looker </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- Search form in navbar -->
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <form class="d-flex" method="GET" action="/">
-          <input
-            class="form-control me-2"
-            type="search"
-            name="search"
-            placeholder="Search for jobs"
-            aria-label="Search"
-            value="<%= typeof search !== 'undefined' ? search : '' %>"
-          >
-          <select name="filterDate" class="form-select me-2">
-            <option value="">All Dates</option>
-            <option value="today" <%= filterDate === 'today' ? 'selected' : '' %>>Today</option>
-            <option value="yesterday" <%= filterDate === 'yesterday' ? 'selected' : '' %>>Yesterday</option>
-          </select>
-          <button class="btn btn-outline-primary" type="submit">Search</button>
-        </form>
-      </div>
+  <!-- Updated Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="/">Job Looker</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Navigation Links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+      <!-- Search Form -->
+      <form class="d-flex" method="GET" action="/">
+        <input
+          class="form-control me-2"
+          type="search"
+          name="search"
+          placeholder="Search for jobs"
+          aria-label="Search"
+          value="<%= typeof search !== 'undefined' ? search : '' %>"
+        >
+       <!--  <select name="filterDate" class="form-select me-2">
+          <option value="">All Dates</option>
+          <option value="today" <%= filterDate === 'today' ? 'selected' : '' %>>Today</option>
+          <option value="yesterday" <%= filterDate === 'yesterday' ? 'selected' : '' %>>Yesterday</option>
+        </select>-->
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
     </div>
-  </nav>
+  </div>
+</nav>
+
 
   <!-- Hero Section -->
   <section class="hero-section text-center">
