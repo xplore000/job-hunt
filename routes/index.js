@@ -115,6 +115,10 @@ router.get('/contact', (req, res) => {
   res.render('contact', { title: 'Contact Us - Job Looker' });
 });
 
+router.get('/privacy', (req, res) => {
+  res.render('privacy', { title: 'Privacy Policy - Job Looker' });
+});
+
 // (Optional) POST route for handling contact form submissions
 // Uncomment and update as needed if you plan to process contact messages
 // router.post('/send-message', (req, res) => {
