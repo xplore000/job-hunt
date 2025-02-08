@@ -30,9 +30,36 @@ body {
   line-height: 1.6;
 }
 
-/* Job Description Formatting */
+/* Scroll Indicator */
+.scroll-indicator p {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #888;
+}
+
+/* Job Description Enhancements */
+.job-description-container {
+  background-color: #ffffff; /* White background for contrast */
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.description-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+}
+
 .job-description {
-  white-space: pre-line; /* Preserves line breaks from the text */
+  white-space: pre-line; /* Preserves line breaks */
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #555;
+  margin: 0;
 }
 
 /* Buttons */
