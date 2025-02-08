@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 
 const app = express();
+const sitemapRoute = require('./routes/sitemap');
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
@@ -12,6 +13,7 @@ mongoose.connect(process.env.MONGODB_URI)
   .catch(err => console.error('MongoDB connection error:', err));
 
 // Middleware
+app.use('/sitemap.xml', sitemapRoute);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.set('view engine', 'ejs');
