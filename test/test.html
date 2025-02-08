@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Card</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="job-card">
+    <div class="job-card-body">
+      <div class="job-price">$120/hr</div>
+      <div class="job-title" id="job-title">Senior UI Developer</div>
+      <div class="job-arrow" onclick="nextPage()">→</div>
+    </div>
+    <div class="job-navigation">
+      <div class="dot active" id="dot-1" onclick="goToPage(0)"></div>
+      <div class="dot" id="dot-2" onclick="goToPage(1)"></div>
+      <div class="dot" id="dot-3" onclick="goToPage(2)"></div>
+      <div class="dot" id="dot-4" onclick="goToPage(3)"></div>
+    </div>
+    <div class="job-footer">
+      <div class="job-brand">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike Logo" class="brand-logo">
+        <span>Nike</span>
+      </div>
+      <button class="job-view">View</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

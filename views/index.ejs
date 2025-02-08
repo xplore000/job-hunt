@@ -11,6 +11,11 @@
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
   />
+  
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+        integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+5hb7O3at3D9SOv/l4Qd/FkUJ2mkYJx0I0Amx5j" 
+        crossorigin="anonymous">
 
   <!-- Bootstrap 5 CSS -->
   <link
@@ -18,13 +23,13 @@
     rel="stylesheet"
   />
   
-  <!-- Custom CSS -->
+  <!-- Custom CSS (ensure this path matches your setup) -->
   <link rel="stylesheet" href="/css/style.css" />
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2003392549681036"
      crossorigin="anonymous"></script>
   
-  <!-- Inline CSS for Floating Sidebar Using Images -->
+  <!-- Inline CSS for Floating Sidebar -->
   <style>
     /* Floating Sidebar Styling */
     .floating-sidebar {
@@ -37,31 +42,21 @@
       gap: 15px;
       padding: 10px;
       z-index: 1000;
+      /* Optional: Add a background or border if needed */
+      /* background: rgba(255, 255, 255, 0.8);
+         border-radius: 0 5px 5px 0; */
     }
-    .floating-sidebar a img {
-      width: 40px;
-      height: 40px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
+    .floating-sidebar a i {
+      color: #333;
+      transition: transform 0.3s ease, color 0.3s ease;
     }
-    .floating-sidebar a img:hover {
+    .floating-sidebar a i:hover {
       transform: scale(1.1);
-      opacity: 0.8;
+      color: #007bff;
     }
   </style>
 </head>
 <body>
-  <!-- Floating Sidebar for Social Media -->
-  <div class="floating-sidebar">
-    <a href="https://instagram.com/yourprofile" target="_blank" title="Follow us on Instagram">
-      <img src="/images/instagram.png" alt="Instagram">
-    </a>
-    <a href="https://wa.me/yourphonenumber" target="_blank" title="Chat with us on WhatsApp">
-      <img src="/images/whatsapp.png" alt="WhatsApp">
-    </a>
-    <a href="https://facebook.com/yourprofile" target="_blank" title="Follow us on Facebook">
-      <img src="/images/facebook.png" alt="Facebook">
-    </a>
-  </div>
 
   <!-- Navigation with Search Form -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
@@ -138,8 +133,8 @@
           <img src="/images/amazon.png" alt="Amazon" />
           <img src="/images/tcs.svg.png" alt="TCS" />
           <img src="/images/wipro.png" alt="Wipro" />
-          <img src="/images/netflix.png" alt="Netflix" />
-          <img src="/images/paypal.png" alt="Paypal" />
+          <img src="/images/netflix.png" alt="netflix" />
+          <img src="/images/paypal.png" alt="paypal" />
           <img src="/images/dell.png" alt="Dell" />
           <img src="/images/google.png" alt="Google" />
           <img src="/images/meta.png" alt="Microsoft" />
@@ -147,8 +142,8 @@
           <img src="/images/amazon.png" alt="Amazon" />
           <img src="/images/tcs.svg.png" alt="TCS" />
           <img src="/images/wipro.png" alt="Wipro" />
-          <img src="/images/netflix.png" alt="Netflix" />
-          <img src="/images/paypal.png" alt="Paypal" />
+          <img src="/images/netflix.png" alt="netflix" />
+          <img src="/images/paypal.png" alt="paypal" />
           <img src="/images/dell.png" alt="Dell" />
         </div>
       </div>
