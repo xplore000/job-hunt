@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
       // Typically, you’d generate a URL with a slug or use job._id
       // Example: https://example.com/job/123
       // Replace "example.com" with your domain or use your production URL
-      const jobUrl = `https://example.com/job/${job._id}`;
+      const jobUrl = `https://joblooker.info/job/${job._id}`;
       
       // Optionally use job.postedAt or updatedAt for <lastmod>
       const lastModified = new Date(job.postedAt).toISOString().split('T')[0];
