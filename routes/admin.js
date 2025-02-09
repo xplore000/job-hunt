@@ -37,7 +37,22 @@ router.get('/', async (req, res) => {
 
 // Handle job addition
 router.post('/add', async (req, res) => {
-  const { title, url, description, deadline, isFresher, isExperienced, jobCategory } = req.body;
+  const {
+    title,
+    url,
+    description,
+    deadline,
+    isFresher,
+    isExperienced,
+    jobCategory,
+    employmentType,
+    streetAddress,
+    addressLocality,
+    addressRegion,
+    postalCode,
+    addressCountry
+  } = req.body;
+
   try {
     const newJob = new Job({
       title,
@@ -46,10 +61,24 @@ router.post('/add', async (req, res) => {
       deadline: deadline ? new Date(deadline) : null,
       isFresher: isFresher ? true : false,
       isExperienced: isExperienced ? true : false,
-      jobCategory: jobCategory || undefined
+      jobCategory: jobCategory || undefined,
+      employmentType,
+      location: {
+        streetAddress,
+        addressLocality,
+        addressRegion,
+        postalCode,
+        addressCountry
+      }
     });
+
     await newJob.save();
-    res.redirect('/admin?username=' + process.env.ADMIN_USERNAME + '&password=' + process.env.ADMIN_PASSWORD);
+    res.redirect(
+      '/admin?username=' +
+        process.env.ADMIN_USERNAME +
+        '&password=' +
+        process.env.ADMIN_PASSWORD
+    );
   } catch (error) {
     console.error(error);
     const jobs = await Job.find().sort({ postedAt: -1 });
@@ -73,22 +102,58 @@ router.get('/edit/:id', async (req, res) => {
 
 // Handle job update from the edit form
 router.post('/edit/:id', async (req, res) => {
-  const { title, url, description, deadline, isFresher, isExperienced, jobCategory } = req.body;
+  const {
+    title,
+    url,
+    description,
+    deadline,
+    isFresher,
+    isExperienced,
+    jobCategory,
+    employmentType,
+    streetAddress,
+    addressLocality,
+    addressRegion,
+    postalCode,
+    addressCountry
+  } = req.body;
+
   try {
-    const updatedJob = await Job.findByIdAndUpdate(req.params.id, {
-      title,
-      url,
-      description,
-      deadline: deadline ? new Date(deadline) : null,
-      isFresher: isFresher ? true : false,
-      isExperienced: isExperienced ? true : false,
-      jobCategory: jobCategory || undefined
-    }, { new: true });
+    const updatedJob = await Job.findByIdAndUpdate(
+      req.params.id,
+      {
+        title,
+        url,
+        description,
+        deadline: deadline ? new Date(deadline) : null,
+        isFresher: isFresher ? true : false,
+        isExperienced: isExperienced ? true : false,
+        jobCategory: jobCategory || undefined,
+        employmentType,
+        location: {
+          streetAddress,
+          addressLocality,
+          addressRegion,
+          postalCode,
+          addressCountry
+        }
+      },
+      { new: true }
+    );
+
     if (!updatedJob) {
       return res.status(404).send('Job not found');
     }
+
     // Redirect back to the admin panel with a success message
-    res.redirect('/admin?username=' + process.env.ADMIN_USERNAME + '&password=' + process.env.ADMIN_PASSWORD + '&message=' + encodeURIComponent('Edit successful'));
+    res.redirect(
+      '/admin?username=' +
+        process.env.ADMIN_USERNAME +
+        '&password=' +
+        process.env.ADMIN_PASSWORD +
+        '&message=' +
+        encodeURIComponent('Edit successful')
+    );
   } catch (error) {
     console.error(error);
     res.status(500).send('Server error');
