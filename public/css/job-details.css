@@ -14,6 +14,58 @@ body {
 .navbar-brand {
   font-size: 1.5rem;
 }
+/* Left Sidebar */
+.left-sidebar {
+  position: fixed;
+  top: 100px; /* Distance from the top */
+  left: 10px; /* Align to the left */
+  width: 150px; /* Sidebar width */
+  z-index: 1000; /* Ensure it appears above other elements */
+  padding: 0; /* Remove padding */
+  background: none; /* Remove background color */
+  border: none; /* Remove border */
+  box-shadow: none; /* Remove shadow */
+  overflow-y: auto; /* Allow scrolling if needed */
+  height: calc(100vh - 100px); /* Occupy remaining viewport height */
+}
+
+.left-sidebar .affiliate-banner {
+  margin-bottom: 15px; /* Adjust spacing between banners */
+}
+
+.left-sidebar .affiliate-banner img {
+  width: 100%; /* Make the image fit the sidebar */
+  border-radius: 0; /* Remove rounded corners */
+  box-shadow: none; /* Remove shadow effect from images */
+  transition: transform 0.2s ease;
+  position: relative;
+
+}
+
+.left-sidebar .affiliate-banner .hover-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none; /* Prevent accidental clicks when invisible */
+}
+
+.left-sidebar .affiliate-banner:hover img {
+  opacity: 0.5;
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+
+
+
 
 /* Job Details Card */
 .card {
@@ -127,5 +179,8 @@ body {
   .share-button {
     padding: 0.5rem 0.75rem;
     font-size: 0.9rem;
+  }
+  .left-sidebar {
+    display: none;
   }
 }

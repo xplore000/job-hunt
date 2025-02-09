@@ -151,6 +151,17 @@
     </div>
   </section>
 
+  <div id="emailModal" class="modal">
+    <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <h2>Subscribe for Job Alerts</h2>
+        <p>Enter your email to receive notifications when new jobs are posted.</p>
+        <form id="subscriptionForm">
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+</div>
   <!-- Jobs Listing -->
   <main id="jobs" class="container mt-4">
     <h2 class="mb-4 text-center">Available Job Opportunities</h2>
@@ -282,5 +293,55 @@
   <% } %>  
   <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get the modal and close button elements
+      const modal = document.getElementById('emailModal');
+      const closeModal = document.getElementById('closeModal');
+    
+      // Display the modal when the page loads
+      modal.style.display = 'block';
+    
+      // Close the modal when the user clicks the 'x'
+      closeModal.onclick = function() {
+        modal.style.display = 'none';
+      };
+    
+      // Optionally, close the modal if the user clicks outside the modal content
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+        }
+      };
+    
+      // Handle form submission to subscribe the email
+      document.getElementById('subscriptionForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        
+        try {
+          const response = await fetch('/subscribe', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email })
+          });
+          const result = await response.json();
+          
+          if (response.ok) {
+            alert(result.message);
+            modal.style.display = 'none'; // Close the modal on success
+          } else {
+            alert(result.message);
+          }
+        } catch (error) {
+          console.error('Subscription error:', error);
+          alert('An error occurred. Please try again.');
+        }
+      });
+    });
+    </script>
+    
 </body>
 </html>

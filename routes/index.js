@@ -1,6 +1,64 @@
 const express = require('express');
 const router = express.Router();
 const Job = require('../models/Job');
+const Visitor = require('../models/Visitor'); // Make sure this points to your Visitor schema
+const nodemailer = require('nodemailer');
+
+// Configure Nodemailer transporter
+// It is recommended to store sensitive credentials in environment variables.
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_USER, // Your Gmail address
+    pass: process.env.GMAIL_PASS  // Your Gmail App Password or regular password if allowed
+  }
+});
+
+router.post('/subscribe', async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      return res.status(400).json({ message: 'Email is required' });
+    }
+
+    // Create and save a new Visitor document
+    const newVisitor = new Visitor({ email });
+    await newVisitor.save();
+
+    // Prepare the welcome email options
+    const mailOptions = {
+      from: `"Job Looker" <${process.env.GMAIL_USER}>`,
+      to: email,
+      subject: 'Welcome to Job Looker',
+      html: `
+        <p>Hello,</p>
+        <p>Thank you for subscribing to Job Looker's job alerts. We are excited to have you on board!</p>
+        <p>Stay tuned for the latest job updates.</p>
+        <p>Best regards,<br>Job Looker Team</p>
+      `
+    };
+
+    // Send the welcome email
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending welcome email:', error);
+      } else {
+        console.log('Welcome email sent:', info.response);
+      }
+    });
+
+    return res.status(200).json({
+      message: 'Subscription successful. A welcome email has been sent to your inbox.'
+    });
+  } catch (error) {
+    console.error(error);
+    // Check for duplicate email error (Mongo error code 11000)
+    if (error.code === 11000) {
+      return res.status(400).json({ message: 'Email already subscribed' });
+    }
+    return res.status(500).json({ message: 'Server error' });
+  }
+});
 
 // Home page: List job postings with pagination, search, and date filtering
 router.get('/', async (req, res) => {
