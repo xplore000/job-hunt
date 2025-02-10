@@ -184,3 +184,21 @@ body {
     display: none;
   }
 }
+
+/* Mobile-friendly styles */
+@media (max-width: 576px) {
+  .job-description-container {
+    padding: 1rem;
+  }
+  .description-title {
+    font-size: 1.25rem;
+  }
+  .job-description {
+    font-size: 1rem;
+  }
+  .view-more-btn {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+  }
+}

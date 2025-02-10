@@ -60,9 +60,11 @@
             <!-- Job Description Section -->
             <div class="job-description-container mb-4">
               <h2 class="description-title">Job Description</h2>
-              <p class="card-text lead job-description">
-                <%= job.description %>
+              <p class="card-text lead job-description short-description">
+                <%= job.description.substring(0, 200) %>
+                <span class="more-text" style="display: none;"><%= job.description.substring(200) %></span>
               </p>
+              <button id="viewMoreBtn" class="btn btn-link p-0">View More</button>
             </div>
             
             <div class="mb-4">
@@ -135,5 +137,19 @@
   <% } %>
   <!-- Include the external share JS file -->
   <script src="/js/share.js"></script>
+  <script>
+  document.getElementById('viewMoreBtn').addEventListener('click', function() {
+    const moreText = document.querySelector('.more-text');
+    const viewMoreBtn = document.getElementById('viewMoreBtn');
+    
+    if (moreText.style.display === 'none') {
+      moreText.style.display = 'inline';
+      viewMoreBtn.textContent = 'View Less';
+    } else {
+      moreText.style.display = 'none';
+      viewMoreBtn.textContent = 'View More';
+    }
+  });
+  </script>
 </body>
 </html>
