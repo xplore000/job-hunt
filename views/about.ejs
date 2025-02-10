@@ -16,6 +16,24 @@
     />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      /* Make the page take full height and push the footer to the bottom */
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: white;
+      }
+      main {
+        flex: 1;
+      }
+      a{
+        text-decoration: none;
+      }
+      footer {
+        background-color: white; /* Matches the page */
+      }
+    </style>
   </head>
   <body>
     <!-- Navigation -->
@@ -86,7 +104,15 @@
     <!-- Footer -->
     <footer class="text-center py-4 border-top">
       <div class="container">
-        <p class="mb-0">© 2025 Job Looker. All Rights Reserved.</p>
+        <p class="mb-0">
+          © 2025 Job Looker. All Rights Reserved.
+          &nbsp;|&nbsp;
+          <a href="/about">About</a>
+          &nbsp;|&nbsp;
+          <a href="/contact">Contact</a>
+          &nbsp;|&nbsp;
+          <a href="/privacy">Privacy Policy</a>
+        </p>
       </div>
     </footer>
 

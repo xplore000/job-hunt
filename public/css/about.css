@@ -1,5 +1,10 @@
 /* ABOUT PAGE-SPECIFIC CSS */
-
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: white;
+}
 /* Hero Section: Minimal gradient & center alignment */
 .about-hero {
     background: linear-gradient(135deg, #ffffff, #f8f9fa);

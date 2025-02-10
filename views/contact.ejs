@@ -16,6 +16,29 @@
     />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      /* Make the page take full height and push the footer to the bottom */
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: white;
+      }
+      main {
+        flex: 1;
+      }
+      a{
+        text-decoration: none;
+      }
+      .contact-section {
+        background-color: white; /* Ensures uniform background */
+        padding: 20px;
+        border-radius: 10px; /* Optional: Adds a clean look */
+      }
+      footer {
+        background-color: white; /* Matches the page */
+      }
+    </style>
   </head>
   <body>
     <!-- Navigation -->
@@ -59,67 +82,28 @@
       </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <main class="container my-5">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <form action="/send-message" method="POST">
-            <div class="mb-3">
-              <label for="name" class="form-label">Your Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                name="name"
-                placeholder="Enter your full name"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Your Email</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-                placeholder="Enter your email address"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="subject" class="form-label">Subject</label>
-              <input
-                type="text"
-                class="form-control"
-                id="subject"
-                name="subject"
-                placeholder="Subject"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="message" class="form-label">Your Message</label>
-              <textarea
-                class="form-control"
-                id="message"
-                name="message"
-                rows="5"
-                placeholder="Write your message here"
-                required
-              ></textarea>
-            </div>
-            <button type="submit" class="btn btn-outline-primary">
-              Send Message
-            </button>
-          </form>
-        </div>
+    <!-- Contact Info Section -->
+    <main class="container my-5 text-center">
+      <div class="contact-section">
+        <h4>For any inquiries, reach us at:</h4>
+        <p class="fs-5">
+          📧 <a href="mailto:joblooker.alerts@gmail.com">joblooker.alerts@gmail.com</a>
+        </p>
       </div>
     </main>
 
     <!-- Footer -->
     <footer class="text-center py-4 border-top">
       <div class="container">
-        <p class="mb-0">© 2025 Job Looker. All Rights Reserved.</p>
+        <p class="mb-0">
+          © 2025 Job Looker. All Rights Reserved.
+          &nbsp;|&nbsp;
+          <a href="/about">About</a>
+          &nbsp;|&nbsp;
+          <a href="/contact">Contact</a>
+          &nbsp;|&nbsp;
+          <a href="/privacy">Privacy Policy</a>
+        </p>
       </div>
     </footer>
 
