@@ -20,10 +20,10 @@
   </nav>
   
   <main class="container my-5">
-    <!-- Form to Add New Job Posting -->
+    <!-- Add New Job Posting Form -->
     <div class="card shadow-sm mb-4">
       <div class="card-header bg-dark text-white">
-        <h3 class="mb-0">Add New Job Posting</h3>
+        <h3>Add New Job Posting</h3>
       </div>
       <div class="card-body">
         <% if (message) { %>
@@ -63,9 +63,7 @@
           <div class="mb-3">
             <label for="deadline" class="form-label">Application Deadline (Optional)</label>
             <input type="date" name="deadline" id="deadline" class="form-control">
-            <div class="form-text">
-              Leave blank if the deadline is unknown. It will show as "Closing soon – apply at the earliest".
-            </div>
+            <div class="form-text">Leave blank if the deadline is unknown.</div>
           </div>
           <!-- Employment Type -->
           <div class="mb-3">
@@ -98,20 +96,25 @@
             <label for="addressCountry" class="form-label">Country</label>
             <input type="text" name="addressCountry" id="addressCountry" class="form-control" placeholder="Country">
           </div>
+          <!-- Send Email Notification Checkbox -->
+          <div class="mb-3 form-check">
+            <input type="checkbox" name="sendEmail" id="sendEmail" class="form-check-input">
+            <label for="sendEmail" class="form-check-label">Send Email Notification</label>
+          </div>
           <button type="submit" class="btn btn-primary">Add Job Posting</button>
         </form>
       </div>
     </div>
 
-    <!-- Existing Job Postings with Edit and Delete Options -->
-    <div class="mt-5">
+    <!-- Existing Job Postings List -->
+    <div>
       <h3>Existing Job Postings</h3>
       <% if (jobs && jobs.length > 0) { %>
         <ul class="list-group">
           <% jobs.forEach(job => { %>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <span>
-                <strong>#<%= job.jobId %></strong> - <%= job.title %>
+                <strong>#<%= job._id %></strong> - <%= job.title %>
                 <% if (job.jobCategory) { %>
                   (<%= job.jobCategory %>)
                 <% } %>
@@ -127,7 +130,7 @@
         </ul>
 
         <!-- Pagination Controls -->
-        <nav aria-label="Page navigation" class="mt-4">
+        <nav class="mt-4">
           <ul class="pagination justify-content-center">
             <% if (page > 1) { %>
               <li class="page-item">

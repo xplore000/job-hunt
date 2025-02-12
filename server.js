@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 
 const app = express();
-const sitemapRoute = require('./routes/sitemap');
+const sitemapRoute = require('./routes/sitemap'); // if you have a sitemap route
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
@@ -20,7 +20,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
-const indexRoutes = require('./routes/index');
+const indexRoutes = require('./routes/index'); // your other routes
 const adminRoutes = require('./routes/admin');
 
 app.use('/', indexRoutes);
